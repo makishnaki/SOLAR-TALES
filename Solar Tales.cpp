@@ -1,4 +1,4 @@
-﻿#include <iostream> // Input/Output
+#include <iostream> // Input/Output
 #include <string> // Для создания переменных поддерживающих слова
 #include <vector> // Динамический массив, растет по мере добавления данных
 #include <limits> // Для очистки входного буфера
@@ -67,7 +67,7 @@ void savePlanets() {
     ofstream file(PLANETS_FILE, ios::binary);
 
     if (!file) {
-        cout << "Error: failed to open planets save file!\n";
+        cout << "\033[38;2;160;33;37mError: failed to open planets save file!\033[0m\n";
         return;
     }
 
@@ -85,7 +85,7 @@ void savePlanets() {
     }
 
     file.close();
-    cout << "Planets data saved in file: " << PLANETS_FILE << "\n";
+    cout << "\033[38;2;210;148;94mPlanets data saved in file:\033[0m \033[38;2;191;58;51m" << PLANETS_FILE << "\033[0m\n";
 }
 
 // Загрузка планет из бинарного файла
@@ -93,7 +93,7 @@ void loadPlanets() {
     ifstream file(PLANETS_FILE, ios::binary);
 
     if (!file) {
-        cout << "Planet file not found. We will create a new one for you.\n";
+        cout << "\033[38;2;191;58;51mPlanet file not found. We will create a new one for you.\033[0m\n";
         return;
     }
 
@@ -117,7 +117,7 @@ void loadPlanets() {
     }
 
     file.close();
-    cout << "Planets loaded: " << planets.size() << " \n";
+    cout << "\033[38;2;210;148;94mPlanets loaded:\033[0m \033[38;2;191;58;51m" << planets.size() << " \033[0m\n";
 }
 
 // Сохранение спутников в бинарный файл
@@ -125,7 +125,7 @@ void saveSatellites() {
     ofstream file(SATELLITES_FILE, ios::binary);
 
     if (!file) {
-        cout << "Error: failed to open satellites save file!\n";
+        cout << "\033[38;2;160;33;37mError: failed to open satellites save file!\033[0m\n";
         return;
     }
 
@@ -144,7 +144,7 @@ void saveSatellites() {
     }
 
     file.close();
-    cout << "Satellites data saved in file: " << SATELLITES_FILE << "\n";
+    cout << "\033[38;2;210;148;94mSatellites data saved in file:\033[0m \033[38;2;191;58;51m" << SATELLITES_FILE << "\033[0m\n";
 }
 
 // Загрузка спутников из бинарного файла
@@ -152,7 +152,7 @@ void loadSatellites() {
     ifstream file(SATELLITES_FILE, ios::binary);
 
     if (!file) {
-        cout << "Satellite file not found. We will create a new one for you.\n";
+        cout << "\033[38;2;191;58;51mSatellite file not found. We will create a new one for you.\033[0m\n";
         return;
     }
 
@@ -177,7 +177,7 @@ void loadSatellites() {
     }
 
     file.close();
-    cout << "Satellites loaded: " << satellites.size() << " \n";
+    cout << "\03[38;2;210;148;94mSatellites loaded:\033[0m \033[38;2;191;58;51m" << satellites.size() << " \033[0m\n";
 }
 
 // Сохранение всех данных
@@ -203,7 +203,7 @@ void clearScreen() {
 
 // Функция для ожидания нажатия Enter
 void pressEnterToContinue() {
-    cout << "\nPress Enter to continue...";
+    cout << "\n\033[38;2;255;255;255mPress Enter to continue...\033[0m";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();
 }
@@ -221,10 +221,10 @@ bool planetExists(const string& planetName) {
 // Функция для отображения списка планет
 void showPlanetsList() {
     if (planets.empty()) {
-        cout << "  (list od planets is empty)\n";
+        cout << "\033[38;2;191;58;51m  (list od planets is empty)\033[0m\n";
     }
     else {
-        cout << "  Existing planets:\n";
+        cout << "\033[38;2;210;148;94  Existing planets:\033[0m\n";
         for (const auto& planet : planets) {
             cout << "  - " << planet.name << "\n";
         }
@@ -234,45 +234,45 @@ void showPlanetsList() {
 // Функция отображения главного меню
 void showMainMenu() {
     clearScreen();
-    cout << "\" SOLAR TALES \"\n\n";
-    cout << "Main Menu:\n";
-    cout << "- 1 - Add data\n";
-    cout << "- 2 - View data\n";
-    cout << "- 3 - Delete data\n";
-    cout << "- 4 - Search/Filter\n";
-    cout << "- 5 - Summary\n";
-    cout << "- 6 - Sort\n";
-    cout << "- 7 - Save and Exit\n";
-    cout << "\nEnter Your choice : ";
+    cout << "\"\033[38;2;255;255;255m SOLAR TALES \033[0m\"\n\n";
+    cout << "\033[38;2;210;148;94mMain Menu:\033[0m\n";
+    cout << "\033[38;2;191;58;51m- 1 -\033[0m \033[38;2;210;148;94mAdd data\033[0m\n";
+    cout << "\033[38;2;191;58;51m- 2 -\033[0m \033[38;2;210;148;94mView data\033[0m\n";
+    cout << "\033[38;2;191;58;51m- 3 -\033[0m \033[38;2;210;148;94mDelete data\033[0m\n";
+    cout << "\033[38;2;191;58;51m- 4 -\033[0m \033[38;2;210;148;94mSearch/Filter\033[0m\n";
+    cout << "\033[38;2;191;58;51m- 5 -\033[0m \033[38;2;210;148;94mSummary\033[0m\n";
+    cout << "\033[38;2;191;58;51m- 6 -\033[0m \033[38;2;210;148;94mSort\033[0m\n";
+    cout << "\033[38;2;191;58;51m- 7 -\033[0m \033[38;2;210;148;94mSave and Exit\033[0m\n";
+    cout << "\n\033[38;2;255;255;255mEnter Your choice : \033[0m";
 }
 
 // Функция для добавления планеты
 void addPlanet() {
     Planet planet;
 
-    cout << "\n=== Adding planet ===\n";
+    cout << "\n\033[38;2;210;148;94m=== Adding planet ===\033[0m\n";
 
-    cout << "Enter the name of the planet: ";
+    cout << "\033[38;2;210;148;94mEnter the name of the planet: \033[0m\033[38;2;191;58;51m";
     cin.ignore();
     getline(cin, planet.name);
 
     // Проверка на уникальность имени
     if (planetExists(planet.name)) {
-        cout << "Error: planets with one name are not welcome in ANY system!\n";
+        cout << "\033[0m\033[38;2;160;33;37mError: planets with one name are not welcome in ANY system!\033[0m\n";
         return;
     }
 
-    cout << "Enter the age of the planet (in millions of years): ";
+    cout << "\033[0m\033[38;2;210;148;94mEnter the age of the planet (in millions of years): \033[0m\033[38;2;191;58;51m";
     cin >> planet.age;
 
-    cout << "Enter average temperature (in °C): ";
+    cout << "\033[0m\033[38;2;210;148;94mEnter average temperature (in °C): \033[0m\033[38;2;191;58;51m";
     cin >> planet.temperature;
 
-    cout << "Enter the main colour of the planet: ";
+    cout << "\033[0m\033[38;2;210;148;94mEnter the main colour of the planet: \033[0m\033[38;2;191;58;51m";
     cin.ignore();
     getline(cin, planet.color);
 
-    cout << "Enter general describtion: ";
+    cout << "\033[0m\033[38;2;210;148;94mEnter general describtion: \033[0m\033[38;2;191;58;51m";
     getline(cin, planet.description);
 
     planets.push_back(planet);
@@ -280,60 +280,60 @@ void addPlanet() {
     // Автосохранение после добавления
     savePlanets();
 
-    cout << "\nPlanet \"" << planet.name << "\" successfully added to the database! \n";
+    cout << "\n\033[38;2;210;148;94mPlanet \033[0m\033[38;2;191;58;51m\"" << planet.name << "\"\033[0m \033[38;2;210;148;94msuccessfully added to the database! \033[0m\n";
 }
 
 // Функция для добавления спутника 
 void addSatellite() {
     if (planets.empty()) {
-        cout << "\nError: you need to have at least one planet to record data of your satellite!\n";
+        cout << "\n\033[38;2;160;33;37mError: you need to have at least one planet to record data of your satellite!\033[0m\n";
         showPlanetsList();
         return;
     }
 
     Satellite satellite;
 
-    cout << "\n=== Adding Satellite ===\n";
+    cout << "\n\033[38;2;210;148;94m=== Adding Satellite ===\033[0m\n";
 
-    cout << "Enter the name of the satellite: ";
+    cout << "\033[38;2;210;148;94mEnter the name of the satellite: \033[0m\033[38;2;191;58;51m";
     cin.ignore();
     getline(cin, satellite.name);
 
     // Проверка на уникальность имени спутника
     for (const auto& sat : satellites) {
         if (sat.name == satellite.name) {
-            cout << "Error: sattelites with one name are not welcome in ANY system!\n";
+            cout << "\033[0m\033[38;2;160;33;37mError: sattelites with one name are not welcome in ANY system!\033[0m\n";
             return;
         }
     }
 
-    cout << "Enter the age of the satellite (in millions of years): ";
+    cout << "\033[0m\033[38;2;211;94;142mEnter the age of the satellite (in millions of years): \033[0m\033[38;2;191;58;51m";
     cin >> satellite.age;
 
-    cout << "Enter average temperature (in °C): ";
+    cout << "\033[0m\033[38;2;211;94;142mEnter average temperature (in °C): \033[0m\033[38;2;191;58;51m";
     cin >> satellite.temperature;
 
-    cout << "Enter the main colour of the satellite: ";
+    cout << "\033[0m\033[38;2;211;94;142mEnter the main colour of the satellite: \033[0m\033[38;2;191;58;51m";
     cin.ignore();
     getline(cin, satellite.color);
 
-    cout << "Enter general describtion: ";
+    cout << "\033[0m\033[38;2;211;94;142mEnter general describtion: \033[0m\033[38;2;191;58;51m";
     getline(cin, satellite.description);
 
     // Ввод и проверка планеты-хозяина
     bool validPlanet = false;
     do {
-        cout << "\nTo which planet this satellite belongs to?\n";
+        cout << "\n\033[0m\033[38;2;210;148;94mTo which planet this satellite belongs to?\033[0m\033[38;2;191;58;51m\n";
         showPlanetsList();
-        cout << "\nEnter the name of the planet: ";
+        cout << "\n\033[0m\033[38;2;211;94;142mEnter the name of the planet: \033[0m\033[38;2;191;58;51m";
         getline(cin, satellite.planetName);
 
         if (planetExists(satellite.planetName)) {
             validPlanet = true;
         }
         else {
-            cout << "\nError: planet \"" << satellite.planetName << "\" never existed yet!\n";
-            cout << "Please, enter the name from the list above.\n";
+            cout << "\n\033[38;2;160;33;37mError: planet \033[0m\033[38;2;191;58;51m\"" << satellite.planetName << "\" \033[0m\033[38;2;160;33;37mnever existed yet!\033[0m\n";
+            cout << "\033[38;2;160;33;37mPlease, enter the name from the list above.\033[0m\n";
         }
     } while (!validPlanet);
 
@@ -342,8 +342,8 @@ void addSatellite() {
     // Автосохранение после добавления
     saveSatellites();
 
-    cout << "\nSatellite \"" << satellite.name << "\" successfully added to the database! \""
-        << satellite.planetName << "\" and saved!\n";
+    cout << "\n\033[38;2;210;148;94mSatellite \033[0m\033[38;2;191;58;51m\"" << satellite.name << "\"\033[0m\033[38;2;210;148;94m successfully added to the database! \033[0m\033[38;2;191;58;51m\""
+        << satellite.planetName << "\"\033[0m]033[38;2;210;148;94m and saved!\033[0m\n";
 }
 
 // Функция отображения меню добавления данных
@@ -352,12 +352,12 @@ void showAddDataMenu() {
 
     do {
         clearScreen();
-        cout << "\" SOLAR TALES \"\n\n";
-        cout << "Add Data Menu:\n";
-        cout << "- 1 - PLANET\n";
-        cout << "- 2 - SATELLITE\n";
-        cout << "- 3 - Back\n";
-        cout << "\nEnter Your choice : ";
+        cout << "\"\033[38;2;255;255;255m SOLAR TALES \033[0m\"\n\n";
+        cout << "\033[38;2;210;148;94mAdd Data Menu:\033[0m\n";
+        cout << "\033[38;2;191;58;51m- 1 -\033[0m\033[38;2;210;148;94m PLANET\033[0m\n";
+        cout << "\033[38;2;191;58;51m- 2 -\033[0m\033[38;2;210;148;94m SATELLITE\033[0m\n";
+        cout << "\033[38;2;191;58;51m- 3 -\033[0m\033[38;2;210;148;94m Back\033[0m\n";
+        cout << "\n\033[38;2;191;58;51mEnter Your choice : \033[0m";
         cin >> choice;
 
         switch (choice) {
@@ -373,7 +373,7 @@ void showAddDataMenu() {
             // Возврат в главное меню
             break;
         default:
-            cout << "Wrong choice. Try again.\n";
+            cout << "\033[38;2;160;33;37mWrong choice. Try again.\033[0m\n";
             pressEnterToContinue();
         }
     } while (choice != 3);
@@ -382,34 +382,34 @@ void showAddDataMenu() {
 // Функция для форматированного вывода планет
 void displayPlanet(const Planet& planet, int index) {
     cout << index << ". " << planet.name << "\n";
-    cout << "   Age: " << planet.age << " mill. of years\n";
-    cout << "   Temperature: " << planet.temperature << " °C\n";
-    cout << "   Colour: " << planet.color << "\n";
-    cout << "   Describtion: " << planet.description << "\n";
+    cout << "\033[38;2;210;148;94m   Age: \033[0m\033[38;2;191;58;51m" << planet.age << "\033[0m\033[38;2;210;148;94m mill. of years\033[0m\n";
+    cout << "\033[38;2;210;148;94m   Temperature: \033[0m\033[38;2;191;58;51m" << planet.temperature << "\033[38;2;210;148;94m °C\033[0m\n";
+    cout << "\033[38;2;210;148;94m   Colour: \033[0m\033[38;2;191;58;51m" << planet.color << "\033[0m\n";
+    cout << "\033[38;2;210;148;94m   Describtion: \033[0m\033[38;2;191;58;51m" << planet.description << "\033[0m\n";
     cout << "----------------------------------------\n";
 }
 
 // Функция для форматированного вывода спутников
 void displaySatellite(const Satellite& satellite, int index) {
     cout << index << ". " << satellite.name << "\n";
-    cout << "   Planet: " << satellite.planetName << "\n";
-    cout << "   Age: " << satellite.age << " mill. of years\n";
-    cout << "   Temperature: " << satellite.temperature << " °C\n";
-    cout << "   Colour: " << satellite.color << "\n";
-    cout << "   Describtion: " << satellite.description << "\n";
+    cout << "\033[38;2;210;148;94m   Planet: \033[0m\033[38;2;191;58;51m" << satellite.planetName << "\033[0m\n";
+    cout << "\033[38;2;210;148;94m   Age: \033[0m\033[38;2;191;58;51m" << satellite.age << "\033[0m\033[38;2;210;148;94m mill. of years\033[0m\n";
+    cout << "\033[38;2;210;148;94m   Temperature: \033[0m\033[38;2;191;58;51m" << satellite.temperature << "\033[0m\033[38;2;210;148;94m °C\033[0m\n";
+    cout << "\033[38;2;210;148;94m   Colour: \033[0m\033[38;2;191;58;51m" << satellite.color << "\033[0m\n";
+    cout << "\033[38;2;210;148;94m   Describtion: \033[0m\033[38;2;191;58;51m" << satellite.description << "\033[0m\n";
     cout << "----------------------------------------\n";
 }
 
 // Функция для просмотра данных
 void viewData() {
     clearScreen();
-    cout << "\" SOLAR TALES \"\n\n";
-    cout << "=== Viewing Data ===\n\n";
+    cout << "\"\033[38;2;255;255;255m SOLAR TALES \033[0m\"\n\n";
+    cout << "\033[38;2;210;148;94m=== Viewing Data ===\033[0m\n\n";
 
-    cout << "PLANETS:\n";
+    cout << "\033[38;2;210;148;94mPLANETS:\033[0m\n";
     cout << "========================================\n";
     if (planets.empty()) {
-        cout << "No data found.\n";
+        cout << "\033[38;2;191;58;51mNo data found.\033[0m\n";
     }
     else {
         for (size_t i = 0; i < planets.size(); i++) {
@@ -417,10 +417,10 @@ void viewData() {
         }
     }
 
-    cout << "\nSATELLITES:\n";
+    cout << "\n\033[38;2;210;148;94mSATELLITES:\033[0m\n";
     cout << "========================================\n";
     if (satellites.empty()) {
-        cout << "No data found.\n";
+        cout << "\033[38;2;191;58;51mNo data found.\033[0m\n";
     }
     else {
         for (size_t i = 0; i < satellites.size(); i++) {
@@ -434,35 +434,35 @@ void viewData() {
 // Функция для удаления данных
 void deleteData() {
     clearScreen();
-    cout << "\" SOLAR TALES \"\n\n";
-    cout << "=== Data Destruction ===\n\n";
+    cout << "\"\033[38;2;255;255;255m SOLAR TALES \033[0m\"\n\n";
+    cout << "\033[38;2;210;148;94m=== Data Destruction ===\033[0m\n\n";
 
     if (planets.empty() && satellites.empty()) {
-        cout << "No data to destroy.\n";
+        cout << "\033[38;2;191;58;51mNo data to destroy.\033[0m\n";
         pressEnterToContinue();
         return;
     }
 
     int choice;
-    cout << "What do you wish to destroy?\n";
-    cout << "1 - Planet\n";
-    cout << "2 - Satellite\n";
-    cout << "3 - Back\n";
-    cout << "Your choice: ";
+    cout << "\033[38;2;210;148;94mWhat do you wish to destroy?\033[0m\n";
+    cout << "\033[38;2;191;58;51m1 - \033[0m\033[38;2;210;148;94mPlanet\033[0m\n";
+    cout << "\033[38;2;191;58;51m2 - \033[0m\033[38;2;210;148;94mSatellite\033[0m\n";
+    cout << "\033[38;2;191;58;51m3 - \033[0m\033[38;2;210;148;94mBack\033[0m\n";
+    cout << "\033[38;2;210;148;94mYour choice: \033[0m\033[38;2;191;58;51m";
     cin >> choice;
 
     if (choice == 1) {
         if (planets.empty()) {
-            cout << "No planets to destroy. :(\n";
+            cout << "\033[0m\033[38;2;210;148;94mNo planets to destroy. :(\033[0m\n";
         }
         else {
-            cout << "\nAvailable planets:\n";
+            cout << "\n\033[0m\033[38;2;210;148;94mAvailable planets:\033[0m\n";
             for (size_t i = 0; i < planets.size(); i++) {
                 cout << i + 1 << ". " << planets[i].name << "\n";
             }
 
             int planetChoice;
-            cout << "\nEnter planet number for destruction (0 to show mercy): ";
+            cout << "\n\033[38;2;210;148;94mEnter planet number for destruction (0 to show mercy): \033[0m\033[38;2;191;58;51m";
             cin >> planetChoice;
 
             if (planetChoice > 0 && planetChoice <= planets.size()) {
@@ -484,23 +484,23 @@ void deleteData() {
                 // Сохраняем изменения
                 saveAllData();
 
-                cout << "Planet \"" << planetName << "\" and her satellites were destroyed by you. Data saved tho!.\n";
+                cout << "\033[0m\033[38;2;210;148;94mPlanet \033[0m\033[38;2;191;58;51m\"" << planetName << "\"\033[0m\033[38;2;210;148;94m and her satellites were destroyed by you. Data saved tho!.\033[0m\n";
             }
         }
     }
     else if (choice == 2) {
         if (satellites.empty()) {
-            cout << "No satellites to destroy.\n";
+            cout << "\033[38;2;191;58;51mNo satellites to destroy.\033[0m\n";
         }
         else {
-            cout << "\nAvailable sattelites:\n";
+            cout << "\n\033[38;2;210;148;94mAvailable sattelites:\033[0m\n";
             for (size_t i = 0; i < satellites.size(); i++) {
                 cout << i + 1 << ". " << satellites[i].name
                     << " (planet: " << satellites[i].planetName << ")\n";
             }
 
             int satelliteChoice;
-            cout << "\nEnter satellite number for destruction (0 to show mercy): ";
+            cout << "\n\033[38;2;210;148;94mEnter satellite number for destruction (0 to show mercy): \033[0m\033[38;2;191;58;51m";
             cin >> satelliteChoice;
 
             if (satelliteChoice > 0 && satelliteChoice <= satellites.size()) {
@@ -510,7 +510,7 @@ void deleteData() {
                 // Сохраняем изменения
                 saveSatellites();
 
-                cout << "Satellite \"" << satelliteName << "\" destroyed by you. Why? Data saved.\n";
+                cout << "\033[0m\033[38;2;210;148;94mSatellite \033[0m\033[38;2;191;58;51m\"" << satelliteName << "\"\033[0m\033[38;2;210;148;94m destroyed by you. Why? Data saved.\033[0m\n";
             }
         }
     }
@@ -521,14 +521,14 @@ void deleteData() {
 // Меню ручного сохранения
 void saveMenu() {
     clearScreen();
-    cout << "\" SOLAR TALES \"\n\n";
-    cout << "=== Data saving ===\n\n";
+    cout << "\"\033[38;2;255;255;255m SOLAR TALES \033[0m\"\n\n";
+    cout << "\033[38;2;210;148;94m=== Data saving ===\033[0m\n\n";
 
-    cout << "1 - Save all data\n";
-    cout << "2 - Save only planets\n";
-    cout << "3 - Save only satelliets\n";
-    cout << "4 - Back\n";
-    cout << "Your choice: ";
+    cout << "\033[38;2;191;58;51m1 - \033[0m\033[38;2;210;148;94mSave all data\033[0m\n";
+    cout << "\033[38;2;191;58;51m2 - \033[0m\033[38;2;210;148;94mSave only planets\033[0m\n";
+    cout << "\033[38;2;191;58;51m3 - \033[0m\033[38;2;210;148;94mSave only satelliets\033[0m\n";
+    cout << "\033[38;2;191;58;51m4 - \033[0m\033[38;2;210;148;94mBack\033[0m\n";
+    cout << "\033[38;2;210;148;94mYour choice: \033[0m\033[38;2;191;58;51m";
 
     int choice;
     cin >> choice;
@@ -536,7 +536,7 @@ void saveMenu() {
     switch (choice) {
     case 1:
         saveAllData();
-        cout << "All data saved!\n";
+        cout << "\033[0m\033[38;2;210;148;94mAll data saved!\033[0m\n";
         break;
     case 2:
         savePlanets();
@@ -547,7 +547,7 @@ void saveMenu() {
     case 4:
         return;
     default:
-        cout << "Wrong choice!\n";
+        cout << "\033[38;2;160;33;37mWrong choice!\033[0m\n";
     }
 
     pressEnterToContinue();
@@ -556,14 +556,14 @@ void saveMenu() {
 // Остальные функции
 void searchFilter() {
     clearScreen();
-    cout << "\" SOLAR TALES \"\n\n";
-    cout << "=== Search/Filters ===\n\n";
+    cout << "\"\033[38;2;255;255;255m SOLAR TALES \033[0m\"\n\n";
+    cout << "\033[38;2;210;148;94m=== Search/Filters ===\033[0m\n\n";
 
-    cout << "1 - Search by name\n";
-    cout << "2 - Search by planet (for satellites)\n";
-    cout << "3 - Save data (by hand)\n";
-    cout << "4 - Back\n";
-    cout << "Your choice: ";
+    cout << "\033[38;2;191;58;51m1 - \033[0m\033[38;2;210;148;94mSearch by name\033[0m\n";
+    cout << "\033[38;2;191;58;51m2 - \033[0m\033[38;2;210;148;94mSearch by planet (for satellites)\033[0m\n";
+    cout << "\033[38;2;191;58;51m3 - \033[0m\033[38;2;210;148;94mSave data (by hand)\033[0m\n";
+    cout << "\033[38;2;191;58;51m4 - \033[0m\033[38;2;210;148;94mBack\033[0m\n";
+    cout << "\033[38;2;210;148;94mYour choice: \033[0m\033[38;2;191;58;51m";
 
     int choice;
     cin >> choice;
@@ -572,13 +572,13 @@ void searchFilter() {
     case 1: {
         // Поиск по имени
         if (planets.empty() && satellites.empty()) {
-            cout << "Data base is empty. :(\n";
+            cout << "\033[0m\033[38;2;191;58;51mData base is empty. :(\033[0m\n";
             pressEnterToContinue();
             return;
         }
 
         string searchName;
-        cout << "Enter name for the search: ";
+        cout << "\033[38;2;210;148;94mEnter name for the search: \033[0m\033[38;2;191;58;51m";
         cin.ignore();
         getline(cin, searchName);
 
@@ -588,7 +588,7 @@ void searchFilter() {
         for (const auto& planet : planets) {
             if (planet.name.find(searchName) != string::npos) {
                 if (!found) {
-                    cout << "\nResults:\n";
+                    cout << "\n\033[0m\033[38;2;210;148;94mResults:\033[0m\n";
                     cout << "========================================\n";
                     found = true;
                 }
@@ -600,7 +600,7 @@ void searchFilter() {
         for (const auto& satellite : satellites) {
             if (satellite.name.find(searchName) != string::npos) {
                 if (!found) {
-                    cout << "\nResults:\n";
+                    cout << "\n\033[0m\033[38;2;210;148;94mResults:\033[0m\n";
                     cout << "========================================\n";
                     found = true;
                 }
@@ -609,13 +609,13 @@ void searchFilter() {
         }
 
         if (!found) {
-            cout << "\nObjects named \"" << searchName << "\" never existed yet.\n";
+            cout << "\n\033[38;2;210;148;94mObjects named \033[0m\033[38;2;191;58;51m\"" << searchName << "\" \033[0m\033[38;2;210;148;94mnever existed yet.\033[0m\n";
         }
         pressEnterToContinue();
         break;
     }
     case 2:
-        cout << "\nWork in progress. :P\n";
+        cout << "\n\033[38;2;210;148;94mWork in progress. :P\033[0m\n";
         pressEnterToContinue();
         break;
     case 3:
@@ -624,26 +624,26 @@ void searchFilter() {
     case 4:
         break;
     default:
-        cout << "Wrong choice!\n";
+        cout << "\033[38;2;191;58;51mWrong choice!\033[0m\n";
         pressEnterToContinue();
     }
 }
 
 void showSummary() {
     clearScreen();
-    cout << "\" SOLAR TALES \"\n\n";
-    cout << "=== Statistics ===\n\n";
+    cout << "\"\033[38;2;255;255;255m SOLAR TALES \033[0m\"\n\n";
+    cout << "\033[38;2;210;148;94m=== Statistics ===\033[0m\n\n";
 
-    cout << "General statistics:\n";
+    cout << "\033[38;2;210;148;94mGeneral statistics:\033[0m\n";
     cout << "-----------------\n";
-    cout << "Amount of planets: " << planets.size() << "\n";
-    cout << "Amount of satellites: " << satellites.size() << "\n";
-    cout << "Amount of objects: " << planets.size() + satellites.size() << "\n";
+    cout << "\033[38;2;210;148;94mAmount of planets: \033[0m\033[38;2;191;58;51m" << planets.size() << "\033[0m\n";
+    cout << "\033[38;2;210;148;94mAmount of satellites: \033[0m\033[38;2;191;58;51m" << satellites.size() << "\033[0m\n";
+    cout << "\033[38;2;210;148;94mAmount of objects: \033[0m\033[38;2;191;58;51m" << planets.size() + satellites.size() << "\033[0m\n";
 
-    cout << "\nData files:\n";
+    cout << "\n\033[38;2;210;148;94mData files:\033[0m\n";
     cout << "-------------\n";
-    cout << "Planets file: " << PLANETS_FILE << "\n";
-    cout << "Sitellites file: " << SATELLITES_FILE << "\n";
+    cout << "\033[38;2;210;148;94mPlanets file: \033[0m\033[38;2;191;58;51m" << PLANETS_FILE << "\033[0m\n";
+    cout << "\033[38;2;210;148;94mSitellites file: \033[0m\033[38;2;191;58;51m" << SATELLITES_FILE << "\033[0m\n";
 
     if (!planets.empty()) {
         int totalAge = 0;
@@ -668,12 +668,12 @@ void showSummary() {
             }
         }
 
-        cout << "\nStatistics on planets:\n";
+        cout << "\n\033[38;2;210;148;94mStatistics on planets:\033[0m\n";
         cout << "----------------------\n";
-        cout << "Average age: " << totalAge / planets.size() << " mill. of years\n";
-        cout << "Average temperature: " << totalTemp / planets.size() << " °C\n";
-        cout << "Oldest planet: " << oldestPlanet << " (" << oldestAge << " mill. of years)\n";
-        cout << "Hottest planet: " << hottestPlanet << " (" << hottestTemp << " °C)\n";
+        cout << "\033[38;2;210;148;94mAverage age: \033[0m\033[38;2;191;58;51m" << totalAge / planets.size() << " \033[0m\033[38;2;210;148;94mmill. of years\033[0m\n";
+        cout << "\033[38;2;210;148;94mAverage temperature: \033[0m\033[38;2;191;58;51m" << totalTemp / planets.size() << " \033[0m\033[38;2;210;148;94m°C\033[0m\n";
+        cout << "\033[38;2;210;148;94mOldest planet: \033[0m\033[38;2;191;58;51m" << oldestPlanet << " \033[0m\033[38;2;210;148;94m(\033[0m\033[38;2;191;58;51m" << oldestAge << " \033[0m\033[38;2;210;148;94mmill. of years)\033[0m\n";
+        cout << "\033[38;2;210;148;94mHottest planet: \033[0m\033[38;2;191;58;51m" << hottestPlanet << " \033[0m\033[38;2;210;148;94m(\033[0m\033[38;2;191;58;51m" << hottestTemp << " \033[0m\033[38;2;210;148;94m°C)\033[0m\n";
     }
 
     pressEnterToContinue();
@@ -681,16 +681,16 @@ void showSummary() {
 
 void sortData() {
     clearScreen();
-    cout << "\" SOLAR TALES \"\n\n";
-    cout << "=== Data Sorting ===\n\n";
+    cout << "\"\033[0m\033[38;2;255;255;255m SOLAR TALES \033[0m\"\n\n";
+    cout << "\033[38;2;210;148;94m=== Data Sorting ===\033[0m\n\n";
 
-    cout << "1 - Sort planets by name\n";
-    cout << "2 - Sort planets by age\n";
-    cout << "3 - Sort planets by temperature\n";
-    cout << "4 - Sort satellites by name\n";
-    cout << "5 - Sort satellites by planets\n";
-    cout << "6 - Back\n";
-    cout << "Your choice: ";
+    cout << "\033[38;2;191;58;51m1 - \033[0m\033[38;2;210;148;94mSort planets by name\033[0m\n";
+    cout << "\033[38;2;191;58;51m2 - \033[0m\033[38;2;210;148;94mSort planets by age\033[0m\n";
+    cout << "\033[38;2;191;58;51m3 - \033[0m\033[38;2;210;148;94mSort planets by temperature\033[0m\n";
+    cout << "\033[38;2;191;58;51m4 - \033[0m\033[38;2;210;148;94mSort satellites by name\033[0m\n";
+    cout << "\033[38;2;191;58;51m5 - \033[0m\033[38;2;210;148;94mSort satellites by planets\033[0m\n";
+    cout << "\033[38;2;191;58;51m6 - \033[0m\033[38;2;210;148;94mBack\033[0m\n";
+    cout << "\033[38;2;210;148;94mYour choice: \033[0m\033[38;2;191;58;51m";
 
     int choice;
     cin >> choice;
@@ -699,32 +699,32 @@ void sortData() {
     case 1:
         sort(planets.begin(), planets.end(),
             [](const Planet& a, const Planet& b) { return a.name < b.name; });
-        cout << "Planets sorted by name.\n";
+        cout << "\033[0m\033[38;2;210;148;94mPlanets sorted by name.\033[0m\n";
         break;
     case 2:
         sort(planets.begin(), planets.end(),
             [](const Planet& a, const Planet& b) { return a.age < b.age; });
-        cout << "Planets sorted by age.\n";
+        cout << "\033[0m\033[38;2;210;148;94mPlanets sorted by age.\033[0m\n";
         break;
     case 3:
         sort(planets.begin(), planets.end(),
             [](const Planet& a, const Planet& b) { return a.temperature < b.temperature; });
-        cout << "Planets sorted by temperature.\n";
+        cout << "\033[0m\033[38;2;210;148;94mPlanets sorted by temperature.\033[0m\n";
         break;
     case 4:
         sort(satellites.begin(), satellites.end(),
             [](const Satellite& a, const Satellite& b) { return a.name < b.name; });
-        cout << "Satellites sorted by name.\n";
+        cout << "\033[0m\033[38;2;210;148;94mSatellites sorted by name.\033[0m\n";
         break;
     case 5:
         sort(satellites.begin(), satellites.end(),
             [](const Satellite& a, const Satellite& b) { return a.planetName < b.planetName; });
-        cout << "Satellites sorted by planet.\n";
+        cout << "\033[0m\033[38;2;210;148;94mSatellites sorted by planet.\033[0m\n";
         break;
     case 6:
         return;
     default:
-        cout << "Wrong choice. Try again.\n";
+        cout << "\033[38;2;160;33;37mWrong choice. Try again.\033[0m\n";
     }
 
     pressEnterToContinue();
@@ -736,7 +736,7 @@ int main() {
     int choice;
 
     // Загружаем данные при запуске
-    cout << "Loading resources!\n";
+    cout << "\033[38;2;210;148;94mLoading resources!\033[0m\n";
     loadAllData();
     pressEnterToContinue();
 
@@ -768,13 +768,13 @@ int main() {
             // Сохраняем данные перед выходом
             saveAllData();
             clearScreen();
-            cout << "Data saved in files:\n";
-            cout << "1. " << PLANETS_FILE << " (planets)\n";
-            cout << "2. " << SATELLITES_FILE << " (satellites)\n";
-            cout << "\nMay the great cosmos guide you. See you tommorow!\n";
+            cout << "\033[38;2;210;148;94mData saved in files:\033[0m\n";
+            cout << "\033[38;2;210;148;94m1. \033[0m\033[38;2;210;148;94m" << PLANETS_FILE << "\033[38;2;210;148;94m (planets)\033[0m\n";
+            cout << "\033[38;2;210;148;94m2. \033[0m\033[38;2;191;58;51m" << SATELLITES_FILE << "\033[38;2;210;148;94m (satellites)\033[0m\n";
+            cout << "\n\033[38;2;210;148;94mMay the great cosmos guide you. See you tommorow!\033[0m\n";
             break;
         default:
-            cout << "Seems like you'va made a mistake. Try again.\n";
+            cout << "\033[38;2;160;33;37mSeems like you'va made a mistake. Try again.\033[0m\n";
             pressEnterToContinue();
         }
     } while (choice != 7);
