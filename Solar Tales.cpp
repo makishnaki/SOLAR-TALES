@@ -4,6 +4,8 @@
 #include <limits> // Для очистки входного буфера
 #include <algorithm> // Для функций сортировки, поиска, изменения, копирования, удаления, минимума/максимума
 #include <fstream>  // Для работы с файлами
+#include <chrono>  //
+#include <thread>  //
 
 using namespace std;
 
@@ -33,6 +35,32 @@ vector<Satellite> satellites;
 // Имена файлов для сохранения
 const string PLANETS_FILE = "planets.dat";
 const string SATELLITES_FILE = "satellites.dat";
+
+// функция лодера
+void sleep_ms(int ms) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+}
+
+void loaderSequence(const std::vector<std::string>& messages, int totalSteps = 40, int delayMs = 60) {
+    //каждое сообщение показываем на своей стадии лоадера
+    for (size_t i = 0; i < messages.size(); ++i) {
+        for (int step = 0; step <= totalSteps; ++step) {
+            int progress = static_cast<int>((step * 100) / totalSteps);
+            //выводим статус загрузки и текущее сообщение
+            std::cout << "Loading in progress: " << progress << "%\n";
+            std::cout << messages[i] << "\n";
+            //имитация прогресса
+            std::cout << "[";
+            int filled = (step * 20) / totalSteps;
+            for (int j = 0; j < 20; ++j) {
+                std::cout << (j < filled ? '=' : ' ');
+            }
+            std::cout << "]\n";
+            sleep_ms(delayMs);
+        }
+    }
+}
+
 
 // Функция для сохранения строки в бинарный файл
 void saveString(ofstream& file, const string& str) {
@@ -233,6 +261,15 @@ void showPlanetsList() {
 
 // Функция отображения главного меню
 void showMainMenu() {
+    std::vector<std::string> startupMessages = {
+    "Initializing modules...",
+    "Loading configurations...",
+    "Updating data...",
+    "Setting up the radar...", 
+    "Accessing the on-board computer..."
+    };
+    //запуск лоадера после старта
+    loaderSequence(startupMessages);
     clearScreen();
     cout << "\"\033[38;2;255;255;255m SOLAR TALES \033[0m\"\n\n";
     cout << "\033[38;2;210;148;94mMain Menu:\033[0m\n";
