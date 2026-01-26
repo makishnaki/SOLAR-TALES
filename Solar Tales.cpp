@@ -11,7 +11,7 @@ using namespace std;
 
 // ↓ ----------- Структуры для хранения данных ----------- ↓
 
-struct Planet {
+struct Planet { // структура планет
     string name;
     int age;
     int temperature;
@@ -19,7 +19,7 @@ struct Planet {
     string description;
 };
 
-struct Satellite {
+struct Satellite { // структура спутников
     string name;
     int age;
     int temperature;
@@ -30,40 +30,40 @@ struct Satellite {
 
 // Векторы для хранения данных
 vector<Planet> planets;
-vector<Satellite> satellites;
+vector<Satellite> satellites; // для списков планет и спутников
 
 // Имена файлов для сохранения
 const string PLANETS_FILE = "planets.dat";
 const string SATELLITES_FILE = "satellites.dat";
 
 // функция лодера
-void sleep_ms(int ms) {
+void sleep_ms(int ms) { // задержка выполнения на заданное количество миллисекунд
     std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }
 
 void loaderSequence(const std::vector<std::string>& messages, int totalSteps = 40, int delayMs = 60) {
     //каждое сообщение показываем на своей стадии лоадера
-    for (size_t i = 0; i < messages.size(); ++i) {
+    for (size_t i = 0; i < messages.size(); ++i) { // принимает набор сообщений, эмитирует их на разных стадиях лоадера и эмулирует процесс загрузки с прогрессбаром
         for (int step = 0; step <= totalSteps; ++step) {
-            int progress = static_cast<int>((step * 100) / totalSteps);
+            int progress = static_cast<int>((step * 100) / totalSteps); // progress вычисляется как % от текущего шага
             //выводим статус загрузки и текущее сообщение
             std::cout << "\033[38;2;83;1;1mLoading in progress: " << progress << "%\n";
-            std::cout << messages[i] << "\n";
+            std::cout << messages[i] << "\n"; // каждый элемент сообщения будет выводиться на своей стадии лоадера
             //имитация прогресса
             std::cout << "[";
             int filled = (step * 20) / totalSteps;
             for (int j = 0; j < 20; ++j) {
-                std::cout << (j < filled ? '=' : ' ');
+                std::cout << (j < filled ? '=' : ' '); // рисуется простая консольная полоска
             }
             std::cout << "]\033[0m\n";
-            sleep_ms(delayMs);
+            sleep_ms(delayMs); // после этого вызывается sleep ms для задержки между шагами
         }
     }
 }
 
 
 // Функция для сохранения строки в бинарный файл
-void saveString(ofstream& file, const string& str) {
+void saveString(ofstream& file, const string& str) { // сначала записывается размер строки, затем пишутся сами символы
     // Сохранение длины строки
     size_t length = str.size();
     file.write((char*)&length, sizeof(length));
@@ -79,7 +79,7 @@ string loadString(ifstream& file) {
     file.read((char*)&length, sizeof(length));
 
     // Создаем буфер для строки
-    char* buffer = new char[length + 1];
+    char* buffer = new char[length + 1]; 
     file.read(buffer, length);
     buffer[length] = '\0';  // Добавляем нулевой символ
 
@@ -100,7 +100,7 @@ void savePlanets() {
     }
 
     // Сохраняем количество планет
-    size_t count = planets.size();
+    size_t count = planets.size(); //
     file.write((char*)&count, sizeof(count));
 
     // Сохраняем каждую планету
@@ -130,7 +130,7 @@ void loadPlanets() {
 
     // Читаем количество планет
     size_t count;
-    file.read((char*)&count, sizeof(count));
+    file.read((char*)&count, sizeof(count)); 
 
     // Читаем каждую планету
     for (size_t i = 0; i < count; i++) {
@@ -225,14 +225,14 @@ void clearScreen() {
 #ifdef _WIN32
     system("cls");
 #else
-    system("clear");
+    system("clear"); // обращается к компьютеру вызывает system clear
 #endif
 }
 
 // Функция для ожидания нажатия Enter
 void pressEnterToContinue() {
     cout << "\n\033[38;2;188;101;119mPress Enter to continue...\033[0m";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Затем ждёт нажатия Enter через cin.ignore и cin.get()
     cin.get();
 }
 
@@ -815,3 +815,4 @@ int main() {
 
     return 0;
 }
+
