@@ -41,14 +41,14 @@ void sleep_ms(int ms) { // задержка выполнения на задан
     std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }
 
-void loaderSequence(const std::vector<std::string>& messages, int totalSteps = 40, int delayMs = 60) {
+void loaderSequence(const vector<string>& messages, int totalSteps = 40, int delayMs = 60) {
     //каждое сообщение показываем на своей стадии лоадера
     for (size_t i = 0; i < messages.size(); ++i) { // принимает набор сообщений, эмитирует их на разных стадиях лоадера и эмулирует процесс загрузки с прогрессбаром
         for (int step = 0; step <= totalSteps; ++step) {
             int progress = static_cast<int>((step * 100) / totalSteps); // progress вычисляется как % от текущего шага
             //выводим статус загрузки и текущее сообщение
-            std::cout << "\033[38;2;83;1;1mLoading in progress: " << progress << "%\n";
-            std::cout << messages[i] << "\n"; // каждый элемент сообщения будет выводиться на своей стадии лоадера
+            cout << "\033[38;2;83;1;1mLoading in progress: " << progress << "%\n";
+            cout << messages[i] << "\n"; // каждый элемент сообщения будет выводиться на своей стадии лоадера
             //имитация прогресса
             std::cout << "[";
             int filled = (step * 20) / totalSteps;
@@ -261,7 +261,7 @@ void showPlanetsList() {
 
 // Функция отображения главного меню
 void showMainMenu() {
-    std::vector<std::string> startupMessages = {
+    vector<string> startupMessages = {
     "Updating data...",
     "Accessing the on-board computer..."
     };
@@ -815,4 +815,5 @@ int main() {
 
     return 0;
 }
+
 
